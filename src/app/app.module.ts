@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,13 +20,19 @@ import { createCustomElement } from '@angular/elements';
   ],
   providers: [],
   bootstrap: [],
-  entryComponents: [DadPowerComponent]
+  entryComponents: [
+    AppComponent,
+    DadPowerComponent
+  ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap{
   constructor(private injector: Injector) {
   }
   
   ngDoBootstrap() {
+    const appElement = createCustomElement(AppComponent, { injector: this.injector });
+    customElements.define('steven-root', appElement);
+    
     const dadPower = createCustomElement(DadPowerComponent, { injector: this.injector });
     customElements.define('steven-dad-power', dadPower);
   }
