@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DadPowerComponent } from './dad-power/dad-power.component';
 import { createCustomElement } from '@angular/elements';
+import { PatienceComponent } from './patience/patience.component';
+import { FunComponent } from './fun/fun.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DadPowerComponent
+    DadPowerComponent,
+    PatienceComponent,
+    FunComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
